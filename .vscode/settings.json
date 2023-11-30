@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"so_long.h": "c",
+		"mlx.h": "c",
+		"mlx_opengl.h": "c",
+		"libft.h": "c",
+		"mlx_png.h": "c",
+		"mlx_new_window.h": "c"
+	}
+}
