@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/01 10:06:07 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/01 10:08:14 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void draw_map(void *mlx_ptr, void *win_ptr, t_map map) {
                 color = 0x00FF00; // Joueur
             } else if (map.data[y][x] == 'E') {
                 color = 0xFF0000; // Sortie
+            } else if (map.data[y][x] == 'C') {
+                color = 0xFF7000; // Collectible
             }
 
             // Dessiner la tuile à la position (x, y)
