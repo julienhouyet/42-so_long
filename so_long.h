@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/11/30 10:18:01 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/01 09:48:16 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,20 @@
 # define SO_LONG_H
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <string.h>
+
+# define TILE_SIZE 32
+# define MAX_MAP_SIZE 100 
+
+typedef struct s_map 
+{
+    char data[MAX_MAP_SIZE][MAX_MAP_SIZE];
+    int width;
+    int height;
+} 				t_map;
 
 #endif
