@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/01 10:08:14 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/04 17:09:35 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx/mlx.h"
 
 void draw_map(void *mlx_ptr, void *win_ptr, t_map map) {
+
     int x, y;
 
     for (y = 0; y < map.height; y++) {
