@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/05 15:37:16 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/05 18:57:56 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include <string.h>
 
 # define TILE_SIZE 32
+
+typedef struct s_map
+{
+	char	**map;
+	int		rows;
+	int		cols;
+}				t_map;
 
 typedef struct s_textures
 {
