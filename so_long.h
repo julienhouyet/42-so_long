@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/04 11:54:14 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/05 15:37:16 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@
 # include <string.h>
 
 # define TILE_SIZE 32
-# define MAX_MAP_SIZE 100 
 
-typedef struct s_map 
+typedef struct s_textures
 {
-    char data[MAX_MAP_SIZE][MAX_MAP_SIZE];
-    int width;
-    int height;
-} 				t_map;
+	void	*background;
+	void	*wall;
+	void	*player;
+	void	*exit;
+	void	*collectible;
+}				t_textures;
 
 #endif
