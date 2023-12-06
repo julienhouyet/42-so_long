@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 17:45:49 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 17:48:57 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,6 @@ void	ft_check_argv(int argc, char **argv)
 	}
 }
 
-void	ft_map_wall(t_map *map)
-{
-	int i;
-	int j;
-	
-	i = 0;
-	j = 0;
-	while (i < map->cols - 1)
-	{
-		if (map->map[0][i] != '1')
-			ft_free_error("Error\nNo wall header", map);
-		if (map->map[map->rows - 1][i] != '1')
-			ft_free_error("Error\nNo wall footer", map);
-		i++;
-	}
-	while (j < map->rows)
-	{
-		if (map->map[j][0] != '1')
-			ft_free_error("Error\nNo wall left", map);
-		if (map->map[j][map->cols - 2] != '1')
-			ft_free_error("Error\nNo wall right", map);
-		j++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_map	map;
@@ -66,6 +41,6 @@ int	main(int argc, char **argv)
 	ft_check_argv(argc, argv);
 	ft_check_map_file(argv[1]);
 	ft_read_map(argv[1], &map);
-	ft_map_wall(&map);
+	ft_map_elem(&map);
 	ft_printf("Tout est ok !");
 }
