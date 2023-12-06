@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/05 18:57:56 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:50:44 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ typedef struct s_map
 	char	**map;
 	int		rows;
 	int		cols;
+	int		nbr_player;
+	int		nbr_items;
+	int		nbr_exit;
+
 }				t_map;
 
 typedef struct s_textures
@@ -35,7 +39,10 @@ typedef struct s_textures
 	void	*wall;
 	void	*player;
 	void	*exit;
-	void	*collectible;
+	void	*item;
 }				t_textures;
+
+void ft_error(char *message);
+void ft_free_error(char *message, t_map map);
 
 #endif

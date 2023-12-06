@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/05 19:15:40 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:47:30 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,33 @@ void    check_map(char *filename)
     close(fd);
 }
 
-void    read_map(char *filename)
+void	save_map(char *filename, t_map *map, int rows, int cols)
+{
+	int		fd;
+    char	*line;
+	int 	i;
+
+	i = -1;
+	fd = open(filename, O_RDONLY);
+	map->map = (char **)malloc(rows * sizeof(char *));
+	if (map->map == NULL)
+		ft_error("Error\nAllocating memory for map->map");
+    while (++i < rows)
+    {
+		line = get_next_line(fd);
+		map->map[i] = (char *)malloc((cols + 1) * sizeof(char));
+		if (map->map[i] == NULL)
+			ft_error("Error\nAllocating memory for map->map[i]");
+		else
+		{
+			map->map[i] = ft_strdup(line);
+			free(line);
+		}
+	}
+	close(fd);
+}
+
+void    read_map(char *filename, t_map *map)
 {
     int		fd;
     char	*line;
@@ -61,16 +87,23 @@ void    read_map(char *filename)
         line = get_next_line(fd);
         if (line == NULL)
             break;
+		if (rows == 0)
+			map->cols = ft_strlen(line);
 		rows++;
         free(line);
     }
-	printf("Rows : %d\n", rows);
+	map->rows = rows;
+	close(fd);
+	save_map(filename, map, map->rows, map->cols);
 }
 
 int	main(int argc, char **argv)
-{	
+{
+	t_map map;
+
 	check_argv(argc, argv);
 	check_map(argv[1]);
-	read_map(argv[1]);
-	ft_printf("Coucou toi");
+	read_map(argv[1], &map);
+	ft_printf("Rows : %d\n", map.rows);
+	ft_printf("Cols : %d\n", map.cols);
 }
