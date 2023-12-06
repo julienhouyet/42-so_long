@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 19:28:45 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 19:30:58 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,26 @@ void	ft_init_game(t_game *game, t_map *map)
 
 void	ft_init_window(t_game *game, t_map *map)
 {
-	game->win = mlx_new_window(game->mlx, TILE_SIZE * (map->cols - 1), TILE_SIZE * map->rows, "Pokemon Red");
+	game->win = mlx_new_window(game->mlx, TILE_SIZE * (map->cols - 1), \
+	TILE_SIZE * map->rows, "Pokemon Red");
 	if (!game->win)
 		ft_free_error("Error\nProblem with window", map);
 }
 
 void draw_map(t_game *game, t_map *map, t_textures *textures) {
 
-    int x, y;
+	int x, y;
 
-    for (int y = 0; y < map->rows; y++) {
-        for (int x = 0; x < map->cols - 1; x++) {
-            int px = x * TILE_SIZE;
-            int py = y * TILE_SIZE;
-            mlx_put_image_to_window(game->mlx, game->win, textures->background, px, py);
-        }
-    }
+	for (int y = 0; y < map->rows; y++) {
+		for (int x = 0; x < map->cols - 1; x++) {
+			int px = x * TILE_SIZE;
+			int py = y * TILE_SIZE;
+			mlx_put_image_to_window(game->mlx, game->win, textures->background, px, py);
+		}
+	}
 
-    for (y = 0; y < map->rows; y++) {
-        for (x = 0; x < map->cols - 1; x++) {
+	for (y = 0; y < map->rows; y++) {
+		for (x = 0; x < map->cols - 1; x++) {
 
             int px = x * TILE_SIZE;
             int py = y * TILE_SIZE;
@@ -111,7 +112,6 @@ int	main(int argc, char **argv)
 	textures = load_textures(game.mlx);
 	ft_init_window(&game, &map);
 	draw_map(&game, &map, &textures);
-    mlx_loop(game.mlx);
-	
+	mlx_loop(game.mlx);
 	ft_printf("Tout est ok !");
 }
