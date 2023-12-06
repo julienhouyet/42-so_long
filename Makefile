@@ -6,14 +6,15 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/06 10:52:00 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/06 16:10:05 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= so_long
 
 SRC			= 	so_long.c \
-				errors.c
+				errors.c \
+				maps.c
 
 OBJ			= ${SRC:.c=.o}
 
