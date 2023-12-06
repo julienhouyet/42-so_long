@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 17:59:16 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 18:55:09 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include <string.h>
 
 # define TILE_SIZE 32
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+
+}				t_game;
 
 typedef struct s_map
 {
