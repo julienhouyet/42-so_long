@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 10:47:30 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 14:32:41 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,25 @@ void    check_map(char *filename)
     close(fd);
 }
 
+int		ft_check_rows_size(char *line, int rows, int cols, int i)
+{
+	int count_char;
+	
+	count_char = ft_strlen(line);
+	if (i == rows - 1)
+	{
+		printf("Lol : %c", line[13]);
+		return (1);
+	}
+	else
+	{
+		if (count_char == cols)
+			return (1);
+		else
+			return (0);
+	}
+}
+
 void	save_map(char *filename, t_map *map, int rows, int cols)
 {
 	int		fd;
@@ -58,18 +77,21 @@ void	save_map(char *filename, t_map *map, int rows, int cols)
 	fd = open(filename, O_RDONLY);
 	map->map = (char **)malloc(rows * sizeof(char *));
 	if (map->map == NULL)
-		ft_error("Error\nAllocating memory for map->map");
+		ft_free_error("Error\nAllocating memory for map->map", map);
     while (++i < rows)
     {
 		line = get_next_line(fd);
-		map->map[i] = (char *)malloc((cols + 1) * sizeof(char));
-		if (map->map[i] == NULL)
-			ft_error("Error\nAllocating memory for map->map[i]");
-		else
+		if (ft_check_rows_size(line, rows, cols, i))
 		{
-			map->map[i] = ft_strdup(line);
-			free(line);
+			map->map[i] = (char *)malloc((cols) * sizeof(char));
+			if (map->map[i] == NULL)
+				ft_free_error("Error\nAllocating memory for map->map[i]", map);
+			else
+				map->map[i] = ft_strdup(line);
 		}
+		else
+			ft_free_error("Error\nMap size not allowed", map);
+		free(line);
 	}
 	close(fd);
 }
@@ -106,4 +128,5 @@ int	main(int argc, char **argv)
 	read_map(argv[1], &map);
 	ft_printf("Rows : %d\n", map.rows);
 	ft_printf("Cols : %d\n", map.cols);
+	ft_printf("Char : %c\n", map.map[3][12]);
 }

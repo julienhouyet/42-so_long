@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:47:24 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 10:52:19 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:17:27 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ void ft_error(char *message)
     exit(EXIT_FAILURE);
 }
 
-void ft_free_error(char *message, t_map map)
+void ft_free_error(char *message, t_map *map)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (i < map.rows)
-	{
-		free(map.map[i]);
-	}
-	free(map.map);
+    i = -1;
+    while (++i < map->rows)
+    {
+        free(map->map[i]);
+    }
+    free(map->map);
+	system("leaks so_long");
     perror(message);
     exit(EXIT_FAILURE);
 }

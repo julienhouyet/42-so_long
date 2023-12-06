@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 10:50:44 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/06 13:37:54 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef struct s_textures
 	void	*item;
 }				t_textures;
 
+int	ft_check_rows_size(char *line, int rows, int cols, int i);
+
 void ft_error(char *message);
-void ft_free_error(char *message, t_map map);
+void ft_free_error(char *message, t_map *map);
 
 #endif
