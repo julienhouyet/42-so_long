@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/07 10:07:31 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:51:03 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_map_elem(t_map *map);
 void		ft_map_wall(t_map *map);
 void		ft_map_count(t_map *map);
 
-t_textures	ft_load_textures(t_game *game);
+void		ft_load_textures(t_game *game, t_textures *textures);
 void		ft_init_game(t_game *game, t_map *map);
 void		ft_init_window(t_game *game, t_map *map);
 void		ft_draw_elem(t_game *game, t_map *map, t_textures *textures);

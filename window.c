@@ -6,29 +6,27 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:59:44 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/07 10:02:46 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:50:57 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_textures	ft_load_textures(t_game *game)
+void	ft_load_textures(t_game *game, t_textures *textures)
 {
-	t_textures	textures;
 	int			width;
 	int			height;
 
-	textures.background = mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", \
+	textures->background = mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", \
 	&width, &height);
-	textures.wall = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", \
+	textures->wall = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", \
 	&width, &height);
-	textures.player = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", \
+	textures->player = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", \
 	&width, &height);
-	textures.exit = mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", \
+	textures->exit = mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", \
 	&width, &height);
-	textures.item = mlx_xpm_file_to_image(game->mlx, "assets/collectible.xpm", \
+	textures->item = mlx_xpm_file_to_image(game->mlx, "assets/collectible.xpm", \
 	&width, &height);
-	return (textures);
 }
 
 void	ft_init_game(t_game *game, t_map *map)
