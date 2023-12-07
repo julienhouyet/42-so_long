@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/07 09:20:35 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/07 10:56:05 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,19 @@ void	ft_check_argv(int argc, char **argv)
 	}
 }
 
+int	ft_close(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit (EXIT_SUCCESS);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map		map;
 	t_game		game;
 	t_textures	textures;
-
+	
 	ft_check_argv(argc, argv);
 	ft_check_map_file(argv[1]);
 	ft_read_map(argv[1], &map);
@@ -48,6 +55,7 @@ int	main(int argc, char **argv)
 	textures = ft_load_textures(game.mlx);
 	ft_init_window(&game, &map);
 	ft_draw_map(&game, &map, &textures);
+	mlx_hook(game.win, 2, 1L<<0, ft_close, &game);
 	mlx_loop(game.mlx);
-	ft_printf("Tout est ok !");
+	ft_free(&map);
 }

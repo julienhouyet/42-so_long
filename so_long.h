@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/07 09:38:20 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/07 10:07:31 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void		ft_draw_map(t_game *game, t_map *map, t_textures *textures);
 
 void		ft_error(char *message);
 void		ft_free_error(char *message, t_map *map);
+void		ft_free(t_map *map);
 
 #endif
