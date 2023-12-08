@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/07 11:51:03 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:41:16 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,12 @@
 # include <string.h>
 
 # define TILE_SIZE 32
-
-typedef struct s_game
-{
-	void	*mlx;
-	void	*win;
-
-}				t_game;
+# define MAX_ROWS 45
+# define MAX_COLS 80
 
 typedef struct s_map
 {
-	char	**map;
+	char	**content;
 	int		rows;
 	int		cols;
 	int		nbr_player;
@@ -49,23 +44,35 @@ typedef struct s_textures
 	void	*item;
 }				t_textures;
 
-void		ft_check_map_file(char *filename);
-int			ft_check_rows_size(char *line, int rows, int cols, int i);
-void		ft_save_map(char *filename, t_map *map, int rows, int cols);
-void		ft_read_map(char *filename, t_map *map);
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_textures	*textures;
+	int			map_created;
+	int			textures_created;
 
-void		ft_map_elem(t_map *map);
-void		ft_map_wall(t_map *map);
-void		ft_map_count(t_map *map);
+}				t_game;
 
-void		ft_load_textures(t_game *game, t_textures *textures);
-void		ft_init_game(t_game *game, t_map *map);
-void		ft_init_window(t_game *game, t_map *map);
-void		ft_draw_elem(t_game *game, t_map *map, t_textures *textures);
-void		ft_draw_map(t_game *game, t_map *map, t_textures *textures);
+void	ft_error(char *message);
+void	ft_free_error(char *message, t_game *game);
+void	ft_free(t_game *game);
 
-void		ft_error(char *message);
-void		ft_free_error(char *message, t_map *map);
-void		ft_free(t_map *map);
+void	ft_check_map(char *filename, t_game *game);
+void	ft_check_max_size(int rows, int cols);
+int		ft_check_rows_size(char *line, int rows, int cols, int i);
+void	ft_save_map(char *filename, t_game *game, int i);
+
+void	ft_map_wall(t_game *game);
+void	ft_map_elem(t_game *game);
+void	ft_map_count(t_game *game);
+
+void	ft_init_game(t_game *game);
+void	ft_load_textures(t_game *game);
+void	ft_draw_map(t_game *game);
+void	ft_draw_elem(t_game *game);
+
+char	*ft_strcpy(char *dest, const char *src);
 
 #endif

@@ -7,6 +7,7 @@
 		"mlx_png.h": "c",
 		"mlx_new_window.h": "c",
 		"unistd.h": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"stdlib.h": "c"
 	}
 }

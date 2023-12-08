@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/07 11:52:08 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/08 18:14:49 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,34 @@ void	ft_check_argv(int argc, char **argv)
 	int	i;
 
 	if (argc != 2)
-	{
-		perror("Error\nUsage: ./so_long.c <name_of_file_ber>\n");
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Error\nFile need to be .ber\n");
 	else
 	{
 		i = ft_strlen(argv[1]);
 		if (!(i >= 4 && argv[1][i - 4] == '.' && \
 		argv[1][i - 3] == 'b' && argv[1][i - 2] == 'e' && \
 		argv[1][i - 1] == 'r'))
-		{
-			perror("Error\nFile need to be .ber\n");
-			exit(EXIT_FAILURE);
-		}
+			ft_error("Error\nFile need to be .ber\n");
 	}
 }
 
-int	ft_close(t_game *game)
+int	close_window(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
-	exit (EXIT_SUCCESS);
+	ft_free_error("Error\nProblem with window", game);
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_map		map;
-	t_game		game;
-	t_textures	textures;
-	
+	t_game		*game;
+
 	ft_check_argv(argc, argv);
-	ft_check_map_file(argv[1]);
-	ft_read_map(argv[1], &map);
-	ft_map_elem(&map);
-	ft_init_game(&game, &map);
-	ft_load_textures(game.mlx, &textures);
-	ft_init_window(&game, &map);
-	ft_draw_map(&game, &map, &textures);
-	//mlx_hook(game.win, 2, 1L<<0, ft_close, &game);
-	mlx_loop(game.mlx);
-	ft_free(&map);
+	game = malloc(sizeof(t_game));
+	if (!game)
+		ft_error("Error\nMalloc game don't work");
+	ft_check_map(argv[1], game);
+	ft_init_game(game);
+	mlx_hook(game->win, 2, 1L<<0, close_window, game->mlx);
+	mlx_loop(game->mlx);
+	system("leaks so_long");
 }

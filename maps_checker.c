@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maps.c                                             :+:      :+:    :+:   */
+/*   maps_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/06 16:40:34 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:40:21 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_check_map_file(char *filename)
+void	ft_check_max_size(int rows, int cols)
 {
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		ft_error("Error\nMap not found");
-	close(fd);
+	if (rows > MAX_ROWS || cols > MAX_COLS)
+		ft_error("Error\nMap size too high");
 }
 
 int	ft_check_rows_size(char *line, int rows, int cols, int i)
@@ -41,36 +37,36 @@ int	ft_check_rows_size(char *line, int rows, int cols, int i)
 	}
 }
 
-void	ft_save_map(char *filename, t_map *map, int rows, int cols)
+void	ft_save_map(char *filename, t_game *game, int i)
 {
 	int		fd;
 	char	*line;
-	int		i;
 
-	i = -1;
 	fd = open(filename, O_RDONLY);
-	map->map = (char **)malloc(rows * sizeof(char *));
-	if (map->map == NULL)
-		ft_free_error("Error\nAllocating memory for map->map", map);
-	while (++i < rows)
+	game->map->content = (char **)malloc(game->map->rows * sizeof(char *));
+	if (game->map->content == NULL)
+		ft_free_error("Error\nAllocating memory for game->map->content", game);
+	while (++i < game->map->rows)
 	{
 		line = get_next_line(fd);
-		if (ft_check_rows_size(line, rows, cols, i))
+		if (ft_check_rows_size(line, game->map->rows, game->map->cols, i))
 		{
-			map->map[i] = (char *)malloc((cols) * sizeof(char));
-			if (map->map[i] == NULL)
-				ft_free_error("Error\nAllocating memory for map->map[i]", map);
+			game->map->content[i] = (char *)malloc((game->map->cols + 1) \
+			* sizeof(char));
+			if (game->map->content[i] == NULL)
+				ft_free_error("Error\nMalloc for game->map->content[i]", game);
 			else
-				map->map[i] = ft_strdup(line);
+				ft_strcpy(game->map->content[i], line);
 		}
 		else
-			ft_free_error("Error\nMap size not allowed", map);
+			ft_free_error("Error\nMap size not allowed", game);
 		free(line);
 	}
 	close(fd);
+	ft_map_elem(game);
 }
 
-void	ft_read_map(char *filename, t_map *map)
+void	ft_check_map(char *filename, t_game *game)
 {
 	int		fd;
 	char	*line;
@@ -78,17 +74,23 @@ void	ft_read_map(char *filename, t_map *map)
 
 	rows = 0;
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error\nMap not open");
+	game->map = malloc(sizeof(t_map));
+	if (!game->map)
+		ft_error("Error\nMalloc fr game->map");
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		if (rows == 0)
-			map->cols = ft_strlen(line);
+			game->map->cols = ft_strlen(line);
 		rows++;
 		free(line);
 	}
-	map->rows = rows;
+	game->map->rows = rows;
 	close(fd);
-	ft_save_map(filename, map, map->rows, map->cols);
+	ft_check_max_size(game->map->rows, game->map->cols);
+	ft_save_map(filename, game, -1);
 }

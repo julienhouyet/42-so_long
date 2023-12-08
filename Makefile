@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/07 09:57:56 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/08 17:31:29 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME		= so_long
 
 SRC			= 	so_long.c \
 				errors.c \
-				maps.c \
+				maps_checker.c \
 				maps_valid.c \
-				window.c
+				game.c \
+				utils.c
 
 OBJ			= ${SRC:.c=.o}
 
