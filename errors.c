@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:47:24 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/08 18:13:47 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/09 10:21:50 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_free_error(char *message, t_game *game)
 {
 	perror(message);
 	ft_free(game);
-	system("leaks so_long");
 	exit(EXIT_FAILURE);
 }
 
@@ -50,4 +49,5 @@ void	ft_free(t_game *game)
 	}
 	game->map->content = NULL;
 	mlx_destroy_window(game->mlx, game->win);
+	system("leaks so_long");
 }

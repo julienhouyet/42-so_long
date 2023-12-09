@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/08 18:14:49 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/09 10:28:00 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ void	ft_check_argv(int argc, char **argv)
 	}
 }
 
-int	close_window(t_game *game)
-{
-	ft_free_error("Error\nProblem with window", game);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_game		*game;
@@ -44,7 +38,7 @@ int	main(int argc, char **argv)
 		ft_error("Error\nMalloc game don't work");
 	ft_check_map(argv[1], game);
 	ft_init_game(game);
-	mlx_hook(game->win, 2, 1L<<0, close_window, game->mlx);
+	mlx_key_hook(game->win, ft_key_hook, game);
+	mlx_hook(game->win, 17, 0, ft_mlx_hook, game);
 	mlx_loop(game->mlx);
-	system("leaks so_long");
 }

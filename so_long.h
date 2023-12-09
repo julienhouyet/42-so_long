@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/08 17:41:16 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/09 10:27:48 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ void	ft_init_game(t_game *game);
 void	ft_load_textures(t_game *game);
 void	ft_draw_map(t_game *game);
 void	ft_draw_elem(t_game *game);
+
+int		ft_key_hook(int key, t_game *game);
+int		ft_mlx_hook(t_game *game);
 
 char	*ft_strcpy(char *dest, const char *src);
 
