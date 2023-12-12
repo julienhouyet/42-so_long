@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/09 10:28:00 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/09 12:56:38 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	ft_check_argv(argc, argv);
 	game = malloc(sizeof(t_game));
 	if (!game)
-		ft_error("Error\nMalloc game don't work");
+		ft_error("Error\nMalloc game");
 	ft_check_map(argv[1], game);
 	ft_init_game(game);
 	mlx_key_hook(game->win, ft_key_hook, game);

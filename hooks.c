@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:17:01 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/09 10:27:30 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/11 06:11:08 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_key_hook(int key, t_game *game)
 {
 	if (key == 53)
 	{
-		ft_printf("End Game");
+		ft_printf("End Game\n");
 		ft_free(game);
 		exit(EXIT_SUCCESS);
 	}
