@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 10:58:20 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 16:51:06 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	ft_map_count(t_game *game)
 	game->map->nbr_player = 0;
 	game->map->nbr_items = 0;
 	game->map->nbr_exit = 0;
-	while (game->map->content[i])
+	while (i < game->map->rows)
 	{
 		j = 0;
-		while (game->map->content[i][j])
+		while (j < game->map->cols)
 		{
 			if (game->map->content[i][j] == 'P')
 				game->map->nbr_player++;
@@ -73,10 +73,10 @@ void	ft_map_player_pos(t_game *game)
 
 	i = 0;
 	game->nbr_move = 0;
-	while (game->map->content[i])
+	while (i < game->map->rows)
 	{
 		j = 0;
-		while (game->map->content[i][j])
+		while (j < game->map->cols)
 		{
 			if (game->map->content[i][j] == 'P')
 			{
