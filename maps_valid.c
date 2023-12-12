@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/08 18:01:31 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:58:20 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,32 @@ void	ft_map_count(t_game *game)
 		ft_free_error("Error\nBad element", game);
 }
 
+void	ft_map_player_pos(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	game->nbr_move = 0;
+	while (game->map->content[i])
+	{
+		j = 0;
+		while (game->map->content[i][j])
+		{
+			if (game->map->content[i][j] == 'P')
+			{
+				game->player_pos_x = j;
+				game->player_pos_y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_map_elem(t_game *game)
 {
 	ft_map_wall(game);
 	ft_map_count(game);
+	ft_map_player_pos(game);
 }

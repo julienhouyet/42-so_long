@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:47:24 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/09 10:49:01 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 09:47:40 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ void	ft_error(char *message)
 void	ft_free_error(char *message, t_game *game)
 {
 	perror(message);
+	ft_free(game);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_free_message(char *message, t_game *game)
+{
+	ft_printf(message);
 	ft_free(game);
 	exit(EXIT_FAILURE);
 }

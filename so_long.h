@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/09 10:27:48 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 15:51:42 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ typedef struct s_game
 	t_textures	*textures;
 	int			map_created;
 	int			textures_created;
-
+	int			nbr_move;
+	int			nbr_items;
+	int			player_pos_x;
+	int			player_pos_y;
 }				t_game;
 
 void	ft_error(char *message);
 void	ft_free_error(char *message, t_game *game);
+void	ft_free_message(char *message, t_game *game);
 void	ft_free(t_game *game);
 
 void	ft_check_map(char *filename, t_game *game);
@@ -67,6 +71,7 @@ void	ft_save_map(char *filename, t_game *game, int i);
 void	ft_map_wall(t_game *game);
 void	ft_map_elem(t_game *game);
 void	ft_map_count(t_game *game);
+void	ft_map_player_pos(t_game *game);
 
 void	ft_init_game(t_game *game);
 void	ft_load_textures(t_game *game);
@@ -75,6 +80,17 @@ void	ft_draw_elem(t_game *game);
 
 int		ft_key_hook(int key, t_game *game);
 int		ft_mlx_hook(t_game *game);
+
+void	ft_move(t_game *game, int next_y, int next_x);
+char	ft_next_pos(t_game *game, int next_y, int next_x);
+void	ft_move_player(t_game *game, int next_y, int next_x);
+void	ft_remove_player(t_game *game);
+
+void	ft_move_up(t_game *game);
+void	ft_move_down(t_game *game);
+void	ft_move_right(t_game *game);
+void	ft_move_left(t_game *game);
+void	ft_map(t_game *game);
 
 char	*ft_strcpy(char *dest, const char *src);
 

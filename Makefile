@@ -6,19 +6,20 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/09 10:19:55 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/12 15:08:50 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= so_long
 
 SRC			= 	so_long.c \
-				errors.c \
+				exit.c \
 				maps_checker.c \
 				maps_valid.c \
 				game.c \
 				utils.c \
-				hooks.c
+				hooks.c \
+				moves.c
 
 OBJ			= ${SRC:.c=.o}
 
@@ -36,7 +37,7 @@ RM			= rm -f
 
 C_FLAGS	= -Wall -Wextra -Werror
 
-MLX_FLAGS = -L. -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -L. -lmlx -framework OpenGL -framework AppKit 
 
 %.o: %.c
 	$(CC) $(C_FLAGS) -c $< -o $@
