@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:59:44 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 16:33:54 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:39:34 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,13 @@ void	ft_init_game(t_game *game)
 		ft_free_error("Error\nMLX init don't work", game);
 	ft_load_textures(game);
 	game->textures_created = 1;
+	game->mlx_init = 1;
+	game->nbr_items = 0;
 	game->win = mlx_new_window(game->mlx, TILE_SIZE * (game->map->cols - 1), \
 	TILE_SIZE * game->map->rows, "Pokemon Red");
 	if (!game->win)
 		ft_free_error("Error\nProblem with window", game);
+	game->win_init = 1;
 	ft_draw_map(game);
 	ft_draw_elem(game);
 }

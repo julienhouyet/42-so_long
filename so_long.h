@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 15:51:42 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:28:05 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_game
 	t_textures	*textures;
 	int			map_created;
 	int			textures_created;
+	int			mlx_init;
+	int			win_init;
 	int			nbr_move;
 	int			nbr_items;
 	int			player_pos_x;

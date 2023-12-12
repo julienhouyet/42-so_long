@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:17:01 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 15:54:06 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:30:32 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	ft_key_hook(int key, t_game *game)
 
 int ft_mlx_hook(t_game *game)
 {
-		ft_free_message("Window Closed\n", game);
+	ft_free_message("Window Closed\n", game);
     return (0);
 }

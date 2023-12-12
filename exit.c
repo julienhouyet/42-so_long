@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:47:24 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 16:54:50 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/12 17:41:59 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_free(t_game *game)
 	}
 	free(game->map->content);
 	free(game->map);
+	game->map = NULL;
 	if (game->textures_created == 1)
 	{
 		mlx_destroy_image(game->mlx, game->textures->background);
@@ -54,7 +55,7 @@ void	ft_free(t_game *game)
 		mlx_destroy_image(game->mlx, game->textures->wall);
 		free(game->textures);
 	}
-	game->map->content = NULL;
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->win_init == 1 || game->mlx_init == 1)
+		mlx_destroy_window(game->mlx, game->win);
 	system("leaks so_long");
 }
