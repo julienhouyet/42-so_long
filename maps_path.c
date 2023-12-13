@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:32:29 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 09:11:04 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:12:51 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_check_elem(t_game *game)
 			{
 				ft_explore_map(game, y, x);
 				if (game->path->nbr_items != 0 || game->path->nbr_exit != 0)
-					ft_free_error("Error\nNo valid Path", game);
+					ft_free_error("Error\nNo valid Path\n\n", game);
 			}
 		}
 	}

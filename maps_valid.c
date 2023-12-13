@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 08:08:43 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:13:02 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	ft_map_wall(t_game *game)
 	while (i < game->map->cols - 1)
 	{
 		if (game->map->content[0][i] != '1')
-			ft_free_error("Error\nNo wall header", game);
+			ft_free_error("Error\nNo wall header\n\n", game);
 		if (game->map->content[game->map->rows - 1][i] != '1')
-			ft_free_error("Error\nNo wall footer", game);
+			ft_free_error("Error\nNo wall footer\n\n", game);
 		i++;
 	}
 	while (j < game->map->rows)
 	{
 		if (game->map->content[j][0] != '1')
-			ft_free_error("Error\nNo wall left", game);
+			ft_free_error("Error\nNo wall left\n\n", game);
 		if (game->map->content[j][game->map->cols - 2] != '1')
-			ft_free_error("Error\nNo wall right", game);
+			ft_free_error("Error\nNo wall right\n\n", game);
 		j++;
 	}
 }
@@ -63,7 +63,7 @@ void	ft_map_count(t_game *game)
 	}
 	if (game->map->nbr_player != 1 || game->map->nbr_exit != 1 \
 	|| game->map->nbr_items < 1)
-		ft_free_error("Error\nBad element", game);
+		ft_free_error("Error\nBad element\n\n", game);
 }
 
 void	ft_map_player_pos(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 16:35:31 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:12:43 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_save_map(char *filename, t_game *game, int i)
 	fd = open(filename, O_RDONLY);
 	game->map->content = (char **)malloc(game->map->rows * sizeof(char *));
 	if (game->map->content == NULL)
-		ft_free_error("Error\nAllocating memory for game->map->content", game);
+		ft_free_error("Error\nMalloc for game->map->content\n\n", game);
 	while (++i < game->map->rows)
 	{
 		line = get_next_line(fd);
@@ -54,12 +54,12 @@ void	ft_save_map(char *filename, t_game *game, int i)
 			game->map->content[i] = (char *)malloc((game->map->cols + 1) \
 			* sizeof(char));
 			if (game->map->content[i] == NULL)
-				ft_free_error("Error\nMalloc for game->map->content[i]", game);
+				ft_free_error("Error\nMalloc for map->content[i]\n\n", game);
 			else
 				ft_strcpy(game->map->content[i], line);
 		}
 		else
-			ft_free_error("Error\nMap size not allowed", game);
+			ft_free_error("Error\nMap size not allowed\n\n", game);
 		free(line);
 	}
 	close(fd);
@@ -75,10 +75,10 @@ void	ft_check_map(char *filename, t_game *game)
 	rows = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_error("Error\nMap not open");
+		ft_error("Error\nMap not open\n\n");
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
-		ft_error("Error\nMalloc fr game->map");
+		ft_error("Error\nMalloc fr game->map\n\n");
 	while (1)
 	{
 		line = get_next_line(fd);
