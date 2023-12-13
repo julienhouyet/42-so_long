@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/12 15:08:50 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/13 07:32:26 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC			= 	so_long.c \
 				game.c \
 				utils.c \
 				hooks.c \
-				moves.c
+				moves.c \
+				maps_path.c
 
 OBJ			= ${SRC:.c=.o}
 

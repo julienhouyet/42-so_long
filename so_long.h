@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 17:28:05 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 08:07:27 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef struct s_map
 
 }				t_map;
 
+typedef struct s_path
+{
+	char	**visited;
+	int		nbr_items;
+	int		nbr_exit;
+
+}				t_path;
+
 typedef struct s_textures
 {
 	void	*background;
@@ -50,6 +58,7 @@ typedef struct s_game
 	void		*win;
 	t_map		*map;
 	t_textures	*textures;
+	t_path		*path;
 	int			map_created;
 	int			textures_created;
 	int			mlx_init;
@@ -74,6 +83,9 @@ void	ft_map_wall(t_game *game);
 void	ft_map_elem(t_game *game);
 void	ft_map_count(t_game *game);
 void	ft_map_player_pos(t_game *game);
+
+void	ft_check_elem(t_game *game);
+void	ft_explore_map(t_game *game, int x, int y);
 
 void	ft_init_game(t_game *game);
 void	ft_load_textures(t_game *game);

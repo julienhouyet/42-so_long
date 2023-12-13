@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:47:24 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/12 17:41:59 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 08:53:35 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void	ft_free(t_game *game)
 	while (i < game->map->rows)
 	{
 		free(game->map->content[i]);
+		free(game->path->visited[i]);
 		i++;
 	}
 	free(game->map->content);
 	free(game->map);
+	free(game->path->visited);
 	game->map = NULL;
 	if (game->textures_created == 1)
 	{
