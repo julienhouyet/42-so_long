@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 08:07:27 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 09:10:02 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	ft_map_elem(t_game *game);
 void	ft_map_count(t_game *game);
 void	ft_map_player_pos(t_game *game);
 
+void	ft_init_map_visited(t_game *game);
+void	ft_free_map_visited(t_game *game);
 void	ft_check_elem(t_game *game);
 void	ft_explore_map(t_game *game, int x, int y);
 

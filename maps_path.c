@@ -6,11 +6,34 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:32:29 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 08:56:39 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/13 09:11:04 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_init_map_visited(t_game *game)
+{
+	game->path = malloc(sizeof(t_path));
+	game->path->nbr_items = game->map->nbr_items;
+	game->path->nbr_exit = game->map->nbr_exit;
+	game->path->visited = malloc(game->map->rows * sizeof(int *));
+}
+
+void	ft_free_map_visited(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->map->rows)
+	{
+		free(game->path->visited[i]);
+		i++;
+	}
+	free(game->path->visited);
+	free(game->path);
+	game->path = NULL;
+}
 
 void	ft_explore_map(t_game *game, int y, int x)
 {
@@ -33,10 +56,7 @@ void	ft_check_elem(t_game *game)
 	int	y;
 	int	x;
 
-	game->path = malloc(sizeof(t_path));
-	game->path->nbr_items = game->map->nbr_items;
-	game->path->nbr_exit = game->map->nbr_exit;
-	game->path->visited = malloc(game->map->rows * sizeof(int *));
+	ft_init_map_visited(game);
 	y = -1;
 	while (++y < game->map->rows)
 		game->path->visited[y] = ft_calloc(game->map->cols, sizeof(int *));
@@ -54,4 +74,5 @@ void	ft_check_elem(t_game *game)
 			}
 		}
 	}
+	ft_free_map_visited(game);
 }
