@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:13:42 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/14 09:14:39 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:40:09 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_move(t_game *game, int next_y, int next_x)
 		if (c == 'C')
 			game->nbr_items++;
 		game->nbr_move++;
-		printf("Move : %d\n", game->nbr_move);
+		ft_printf("Move : %d\n", game->nbr_move);
 	}
 	if (c == 'E')
 	{
