@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/13 07:32:26 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/14 09:13:47 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,10 @@ C_FLAGS	= -Wall -Wextra -Werror
 
 MLX_FLAGS = -L. -lmlx -framework OpenGL -framework AppKit 
 
+all: ${NAME}
+
 %.o: %.c
 	$(CC) $(C_FLAGS) -c $< -o $@
-
-all: ${NAME}
 
 ${NAME}: ${OBJ} ${LIBFT} ${MLX}
 	${CC} ${OBJ} -o ${NAME} ${LIBFT} ${MLX_FLAGS} ${MLX}

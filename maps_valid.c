@@ -6,11 +6,35 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 11:13:02 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:26:28 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_chars_forbidden(t_game *game)
+{
+	int			i;
+	int			j;
+	char		temp;
+
+	i = 0;
+	while (i < game->map->rows)
+	{
+		j = 0;
+		while (j < game->map->cols)
+		{
+			temp = game->map->content[i][j];
+			if (temp != '0' && temp != '1' && temp != 'E' && temp != 'C'\
+			&& temp != 'P' && temp != '\n') 
+			{
+				ft_free_error("Error\nChar forbidden\n\n", game);
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	ft_map_wall(t_game *game)
 {
@@ -95,4 +119,5 @@ void	ft_map_elem(t_game *game)
 	ft_map_count(game);
 	ft_map_player_pos(game);
 	ft_check_elem(game);
+	ft_chars_forbidden(game);
 }
