@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:30:18 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/11/08 15:19:39 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 09:32:18 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_convert(va_list arg, char var)
+static int	ft_convert(va_list *arg, char var)
 {
 	if (var == 'c')
 		return (ft_printf_char(arg));
@@ -48,7 +48,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			size = ft_convert(argptr, str[++i]);
+			size = ft_convert(&argptr, str[++i]);
 			if (size == -1)
 				return (-1);
 			count += size;

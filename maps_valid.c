@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/14 13:59:47 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 09:44:06 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_chars_forbidden(t_game *game)
 		{
 			temp = game->map->content[i][j];
 			if (temp != '0' && temp != '1' && temp != 'E' && temp != 'C'\
-			&& temp != 'P' && temp != '\n' && temp != '\0') 
+			&& temp != 'P' && temp != '\n' && temp != '\0')
 			{
 				ft_free_error("Error\nChar forbidden\n\n", game);
 			}

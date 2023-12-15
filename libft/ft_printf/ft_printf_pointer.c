@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouyet <jhouyet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:53:26 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/11/08 13:57:48 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 09:33:59 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_pointer(va_list arg)
+int	ft_printf_pointer(va_list *arg)
 {
 	unsigned long	nb;
 	int				count;
 
-	nb = va_arg(arg, unsigned long);
+	nb = va_arg(*arg, unsigned long);
 	count = ft_count_hexa(nb);
 	ft_putstr_fd("0x", 1);
 	ft_puthexa_fd(nb, 'x', 1);
