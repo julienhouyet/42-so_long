@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/15 11:45:47 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:47:24 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_error(char *message);
 void	ft_free_error(char *message, t_game *game);
 void	ft_free_message(char *message, t_game *game);
 void	ft_free(t_game *game);
-void	ft_free_map(char *message, t_game *game, int i);
+void	ft_free_map(char *message, t_game *game, int i, int fd, char *line);
 
 void	ft_check_map(char *filename, t_game *game);
 void	ft_check_max_size(int rows, int cols);
