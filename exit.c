@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:47:24 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/15 16:47:37 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:56:42 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ void	ft_error(char *message)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_free_map(char *message, t_game *game, int i, int fd, char *line)
+void	ft_free_map(char *message, t_game *game, int i, int fd)
 {
-	free(line);
 	close(fd);
 	while (i > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/15 16:47:14 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:57:19 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_save_map(char *filename, t_game *game, int i)
 				ft_strcpy(game->map->content[i], line);
 		}
 		else
-			return (ft_free_map("Error\nMap size\n\n", game, i, fd, line));
+			return (ft_free_map("Error\nMap S\n\n", game, i, fd), free(line));
 		free(line);
 	}
 	close(fd);
