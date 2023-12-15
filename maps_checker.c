@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 11:12:43 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:11:39 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_save_map(char *filename, t_game *game, int i)
 
 	fd = open(filename, O_RDONLY);
 	game->map->content = (char **)malloc(game->map->rows * sizeof(char *));
-	if (game->map->content == NULL)
+	if (!game->map->content)
 		ft_free_error("Error\nMalloc for game->map->content\n\n", game);
 	while (++i < game->map->rows)
 	{
@@ -53,13 +53,13 @@ void	ft_save_map(char *filename, t_game *game, int i)
 		{
 			game->map->content[i] = (char *)malloc((game->map->cols + 1) \
 			* sizeof(char));
-			if (game->map->content[i] == NULL)
+			if (!game->map->content[i])
 				ft_free_error("Error\nMalloc for map->content[i]\n\n", game);
 			else
 				ft_strcpy(game->map->content[i], line);
 		}
 		else
-			ft_free_error("Error\nMap size not allowed\n\n", game);
+			return (ft_free_map("Error\nMap size\n\n", game, i), free(line));
 		free(line);
 	}
 	close(fd);

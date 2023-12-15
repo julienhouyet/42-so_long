@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/15 09:05:31 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/15 14:12:30 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ RM			= rm -f
 
 C_FLAGS	= -Wall -Wextra -Werror
 
-MLX_FLAGS = -L. -lmlx -framework OpenGL -framework AppKit 
+MLX_FLAGS = -framework OpenGL -framework AppKit 
 
 all: ${NAME}
 
@@ -46,7 +46,7 @@ all: ${NAME}
 	$(CC) $(C_FLAGS) -c $< -o $@
 
 ${NAME}: ${OBJ} ${LIBFT} ${MLX}
-	${CC} ${OBJ} -o ${NAME} ${LIBFT} ${MLX_FLAGS} ${MLX}
+	${CC} ${C_FLAGS} ${MLX_FLAGS} ${OBJ} -o ${NAME} ${LIBFT} ${MLX}
 
 ${LIBFT}:
 	${MAKE} -C ${LIBFT_PATH}

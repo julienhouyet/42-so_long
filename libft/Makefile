@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/15 09:11:11 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/15 13:33:11 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
 %.o: %.c ${HEADERS}
-			${CC} -I. -c $< -o ${<:.c=.o}
+			${CC} -I. ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS} ${HEADERS}
 	ar rc ${NAME} ${OBJS}
