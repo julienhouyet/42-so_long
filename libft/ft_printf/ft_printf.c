@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:30:18 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/15 09:32:18 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:24:02 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_printf(const char *str, ...)
 				return (-1);
 			count += size;
 		}
-		else 
+		else
 		{
 			ft_putchar_fd(str[i], 1);
 			++count;

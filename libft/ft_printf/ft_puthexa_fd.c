@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:53:25 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/11/20 12:29:26 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:23:53 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_puthexa_fd(unsigned long nb, char var, int fd)
 		ft_puthexa_fd(nb / 16, var, fd);
 		ft_puthexa_fd(nb % 16, var, fd);
 	}
-	else 
+	else
 	{
 		if (nb <= 9)
 		{
