@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/15 09:44:06 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/17 06:20:41 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ void	ft_map_player_pos(t_game *game)
 			{
 				game->player_pos_x = j;
 				game->player_pos_y = i;
+			}
+			if (game->map->content[i][j] == 'E')
+			{
+				game->exit_pos_x = j;
+				game->exit_pos_y = i;
 			}
 			j++;
 		}

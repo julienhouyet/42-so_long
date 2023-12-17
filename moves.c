@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:13:42 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/14 10:40:09 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/17 06:22:15 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	ft_move(t_game *game, int next_y, int next_x)
 	}
 	if (c == 'E')
 	{
+		ft_remove_player(game);
+		ft_move_player(game, next_y, next_x);
 		if (game->nbr_items == game->map->nbr_items)
 		{
-			ft_remove_player(game);
-			ft_move_player(game, next_y, next_x);
 			ft_free_message("FIN !", game);
 		}
 	}
@@ -55,9 +55,18 @@ char	ft_next_pos(t_game *game, int next_y, int next_x)
 
 void	ft_remove_player(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win, game->textures->background, \
-	game->player_pos_x * TILE_SIZE, game->player_pos_y * TILE_SIZE);
-	game->map->content[game->player_pos_y][game->player_pos_x] = '0';
+	if (game->exit_pos_y == game->player_pos_y && game->exit_pos_x == game->player_pos_x)
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->textures->exit, \
+		game->player_pos_x * TILE_SIZE, game->player_pos_y * TILE_SIZE);
+		game->map->content[game->player_pos_y][game->player_pos_x] = 'E';
+	}
+	else
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->textures->background, \
+		game->player_pos_x * TILE_SIZE, game->player_pos_y * TILE_SIZE);
+		game->map->content[game->player_pos_y][game->player_pos_x] = '0';
+	}
 }
 
 void	ft_move_player(t_game *game, int next_y, int next_x)

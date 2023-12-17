@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/15 16:56:51 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/17 06:20:38 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct s_game
 	int			nbr_items;
 	int			player_pos_x;
 	int			player_pos_y;
+	int			exit_pos_x;
+	int			exit_pos_y;
 }				t_game;
 
 void	ft_error(char *message);
