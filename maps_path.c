@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 07:32:29 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 11:12:51 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/17 06:26:32 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_init_map_visited(t_game *game)
 {
-	game->path = malloc(sizeof(t_path));
+	game->path = ft_calloc(1, sizeof(t_path));
 	game->path->nbr_items = game->map->nbr_items;
 	game->path->nbr_exit = game->map->nbr_exit;
-	game->path->visited = malloc(game->map->rows * sizeof(int *));
+	game->path->visited = ft_calloc(1, game->map->rows * sizeof(int *));
 }
 
 void	ft_free_map_visited(t_game *game)

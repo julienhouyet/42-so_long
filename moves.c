@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:13:42 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:22:15 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/17 06:39:59 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ char	ft_next_pos(t_game *game, int next_y, int next_x)
 
 void	ft_remove_player(t_game *game)
 {
-	if (game->exit_pos_y == game->player_pos_y && game->exit_pos_x == game->player_pos_x)
+	if (game->exit_pos_y == game->player_pos_y && \
+	game->exit_pos_x == game->player_pos_x)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->textures->exit, \
 		game->player_pos_x * TILE_SIZE, game->player_pos_y * TILE_SIZE);
@@ -63,7 +64,8 @@ void	ft_remove_player(t_game *game)
 	}
 	else
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->textures->background, \
+		mlx_put_image_to_window(game->mlx, game->win, \
+		game->textures->background, \
 		game->player_pos_x * TILE_SIZE, game->player_pos_y * TILE_SIZE);
 		game->map->content[game->player_pos_y][game->player_pos_x] = '0';
 	}

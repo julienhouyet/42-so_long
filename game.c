@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:59:44 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/13 11:11:49 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/17 06:25:52 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_load_textures(t_game *game)
 	int			width;
 	int			height;
 
-	game->textures = malloc(sizeof(t_textures));
+	game->textures = ft_calloc(1, sizeof(t_textures));
 	if (!game->textures)
 		ft_error("Error\nMalloc game->textures\n\n");
 	game->textures->background = \
