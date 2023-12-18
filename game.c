@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:59:44 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:25:52 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:41:15 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	ft_load_textures(t_game *game)
 {
-	int			width;
-	int			height;
+	int			w;
+	int			h;
 
 	game->textures = ft_calloc(1, sizeof(t_textures));
 	if (!game->textures)
 		ft_error("Error\nMalloc game->textures\n\n");
 	game->textures->background = \
-	mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", \
-	&width, &height);
+	mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", &w, &h);
 	game->textures->wall = \
-	mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", \
-	&width, &height);
+	mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", &w, &h);
 	game->textures->player = \
-	mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", \
-	&width, &height);
+	mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", &w, &h);
 	game->textures->exit = \
-	mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", \
-	&width, &height);
+	mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", &w, &h);
 	game->textures->item = \
-	mlx_xpm_file_to_image(game->mlx, "assets/collectible.xpm", \
-	&width, &height);
+	mlx_xpm_file_to_image(game->mlx, "assets/collectible.xpm", &w, &h);
+
+	if (game->textures->background == 0 || game->textures->wall == 0 || \
+	game->textures->player == 0 || game->textures->exit == 0 || \
+	game->textures->item == 0)
+		ft_free_error("Error\nXPM Problem\n\n", game);
 }
 
 void	ft_draw_elem(t_game *game)
