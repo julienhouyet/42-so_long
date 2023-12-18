@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:38:03 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:09:07 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,23 @@ int	ft_check_rows_size(char *line, int rows, int cols, int i)
 	}
 }
 
+void ft_save_maps_rows(t_game *game, char *line, int i, int fd)
+{
+	if (ft_check_rows_size(line, game->map->rows, game->map->cols, i))
+	{
+		game->map->content[i] = ft_calloc(game->map->cols + 1, \
+		sizeof(char));
+		if (!game->map->content[i])
+			return (ft_free_map("Error\nMalloc for map->content[i]\n\n", \
+			game, i, fd), free(line));
+		else
+			ft_strcpy(game->map->content[i], line);
+	}
+	else
+		return (ft_free_map("Error\nMap S\n\n", game, i, fd), free(line));
+	free(line);
+}
+
 void	ft_save_map(char *filename, t_game *game, int i)
 {
 	int		fd;
@@ -49,18 +66,10 @@ void	ft_save_map(char *filename, t_game *game, int i)
 	while (++i < game->map->rows)
 	{
 		line = get_next_line(fd);
-		if (ft_check_rows_size(line, game->map->rows, game->map->cols, i))
-		{
-			game->map->content[i] = ft_calloc(game->map->cols + 1, \
-			sizeof(char));
-			if (!game->map->content[i])
-				ft_free_error("Error\nMalloc for map->content[i]\n\n", game);
-			else
-				ft_strcpy(game->map->content[i], line);
-		}
-		else
-			return (ft_free_map("Error\nMap S\n\n", game, i, fd), free(line));
-		free(line);
+		if (!line)
+			return (ft_free_map("Error\nMalloc for game->map->content\n\n", \
+			game, i, fd), free(line));
+		ft_save_maps_rows(game, line, i, fd);
 	}
 	close(fd);
 	ft_map_elem(game);

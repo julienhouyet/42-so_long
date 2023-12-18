@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:20:41 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 10:38:41 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ void	ft_map_elem(t_game *game)
 	ft_map_wall(game);
 	ft_map_count(game);
 	ft_map_player_pos(game);
-	ft_check_elem(game);
+	ft_check_elem(game, -1, -1);
 	ft_chars_forbidden(game);
 }

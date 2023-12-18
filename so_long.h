@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:01:40 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:20:38 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:00:01 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_free_map(char *message, t_game *game, int i, int fd);
 void	ft_check_map(char *filename, t_game *game);
 void	ft_check_max_size(int rows, int cols);
 int		ft_check_rows_size(char *line, int rows, int cols, int i);
+void	ft_save_map_rows(t_game *game, char *line, int i, int fd);
 void	ft_save_map(char *filename, t_game *game, int i);
 
 void	ft_chars_forbidden(t_game *game);
@@ -89,9 +90,9 @@ void	ft_map_count(t_game *game);
 void	ft_map_player_pos(t_game *game);
 
 void	ft_init_map_visited(t_game *game);
-void	ft_free_map_visited(t_game *game);
-void	ft_check_elem(t_game *game);
-void	ft_explore_map(t_game *game, int x, int y);
+void	ft_free_map_visited(t_game *game, int y);
+void	ft_check_elem(t_game *game, int y, int x);
+void	ft_explore_map(t_game *game, int y, int x);
 
 void	ft_init_game(t_game *game);
 void	ft_load_textures(t_game *game);
