@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:59:44 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/18 12:15:22 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:25:06 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	load_textures(t_game *game)
 
 	game->textures = ft_calloc(1, sizeof(t_textures));
 	if (!game->textures)
-		ft_error("Error\nMalloc game->textures\n\n");
+		ft_free_error("Error\nMalloc game->textures\n\n", game);
 	game->textures->background = \
 	mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", &w, &h);
 	game->textures->wall = \
@@ -30,7 +30,6 @@ void	load_textures(t_game *game)
 	mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", &w, &h);
 	game->textures->item = \
 	mlx_xpm_file_to_image(game->mlx, "assets/collectible.xpm", &w, &h);
-
 	if (game->textures->background == 0 || game->textures->wall == 0 || \
 	game->textures->player == 0 || game->textures->exit == 0 || \
 	game->textures->item == 0)

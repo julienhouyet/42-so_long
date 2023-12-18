@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/18 12:14:17 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:26:03 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_rows_size(char *line, int rows, int cols, int i)
 	}
 }
 
-void save_maps_rows(t_game *game, char *line, int i, int fd)
+void	save_maps_rows(t_game *game, char *line, int i, int fd)
 {
 	if (check_rows_size(line, game->map->rows, game->map->cols, i))
 	{

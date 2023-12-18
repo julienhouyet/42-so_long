@@ -6,13 +6,13 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 10:11:48 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:23:54 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:24:35 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_check_argv(int argc, char **argv)
+void	check_argv(int argc, char **argv)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 {
 	t_game		*game;
 
-	ft_check_argv(argc, argv);
+	check_argv(argc, argv);
 	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 		ft_error("Error\nMalloc t_game\n\n");
