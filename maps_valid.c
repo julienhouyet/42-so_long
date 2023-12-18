@@ -6,13 +6,13 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:39 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/18 10:38:41 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:14:29 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_chars_forbidden(t_game *game)
+void	chars_forbidden(t_game *game)
 {
 	int			i;
 	int			j;
@@ -36,7 +36,7 @@ void	ft_chars_forbidden(t_game *game)
 	}
 }
 
-void	ft_map_wall(t_game *game)
+void	map_wall(t_game *game)
 {
 	int	i;
 	int	j;
@@ -61,7 +61,7 @@ void	ft_map_wall(t_game *game)
 	}
 }
 
-void	ft_map_count(t_game *game)
+void	map_count(t_game *game)
 {
 	int	i;
 	int	j;
@@ -90,7 +90,7 @@ void	ft_map_count(t_game *game)
 		ft_free_error("Error\nBad element\n\n", game);
 }
 
-void	ft_map_player_pos(t_game *game)
+void	map_player_pos(t_game *game)
 {
 	int	i;
 	int	j;
@@ -118,11 +118,11 @@ void	ft_map_player_pos(t_game *game)
 	}
 }
 
-void	ft_map_elem(t_game *game)
+void	ft_check_map_elem(t_game *game)
 {
-	ft_map_wall(game);
-	ft_map_count(game);
-	ft_map_player_pos(game);
-	ft_check_elem(game, -1, -1);
-	ft_chars_forbidden(game);
+	map_wall(game);
+	map_count(game);
+	map_player_pos(game);
+	chars_forbidden(game);
+	ft_check_map_path(game, -1, -1);
 }

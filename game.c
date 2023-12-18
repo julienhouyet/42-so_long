@@ -6,13 +6,13 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:59:44 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/18 11:41:15 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:15:22 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_load_textures(t_game *game)
+void	load_textures(t_game *game)
 {
 	int			w;
 	int			h;
@@ -37,7 +37,7 @@ void	ft_load_textures(t_game *game)
 		ft_free_error("Error\nXPM Problem\n\n", game);
 }
 
-void	ft_draw_elem(t_game *game)
+void	draw_elem(t_game *game)
 {
 	int	y;
 	int	x;
@@ -64,7 +64,7 @@ void	ft_draw_elem(t_game *game)
 	}
 }
 
-void	ft_draw_map(t_game *game)
+void	draw_map(t_game *game)
 {
 	int	y;
 	int	x;
@@ -92,7 +92,7 @@ void	ft_init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_free_error("Error\nMLX init don't work\n\n", game);
-	ft_load_textures(game);
+	load_textures(game);
 	game->textures_created = 1;
 	game->mlx_init = 1;
 	game->nbr_items = 0;
@@ -101,6 +101,6 @@ void	ft_init_game(t_game *game)
 	if (!game->win)
 		ft_free_error("Error\nProblem with window\n\n", game);
 	game->win_init = 1;
-	ft_draw_map(game);
-	ft_draw_elem(game);
+	draw_map(game);
+	draw_elem(game);
 }

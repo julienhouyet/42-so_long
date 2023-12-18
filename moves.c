@@ -6,38 +6,13 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:13:42 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/17 06:39:59 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:47:14 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_move(t_game *game, int next_y, int next_x)
-{
-	char	c;
-
-	c = ft_next_pos(game, next_y, next_x);
-	if (c == '0' || c == 'C')
-	{
-		ft_remove_player(game);
-		ft_move_player(game, next_y, next_x);
-		if (c == 'C')
-			game->nbr_items++;
-		game->nbr_move++;
-		ft_printf("Move : %d\n", game->nbr_move);
-	}
-	if (c == 'E')
-	{
-		ft_remove_player(game);
-		ft_move_player(game, next_y, next_x);
-		if (game->nbr_items == game->map->nbr_items)
-		{
-			ft_free_message("FIN !", game);
-		}
-	}
-}
-
-char	ft_next_pos(t_game *game, int next_y, int next_x)
+char	next_pos(t_game *game, int next_y, int next_x)
 {
 	int	temp_y;
 	int	temp_x;
@@ -53,7 +28,7 @@ char	ft_next_pos(t_game *game, int next_y, int next_x)
 	return ('1');
 }
 
-void	ft_remove_player(t_game *game)
+void	remove_player(t_game *game)
 {
 	if (game->exit_pos_y == game->player_pos_y && \
 	game->exit_pos_x == game->player_pos_x)
@@ -71,11 +46,36 @@ void	ft_remove_player(t_game *game)
 	}
 }
 
-void	ft_move_player(t_game *game, int next_y, int next_x)
+void	move_player(t_game *game, int next_y, int next_x)
 {
 	game->player_pos_y += next_y;
 	game->player_pos_x += next_x;
 	game->map->content[game->player_pos_y][game->player_pos_x] = 'P';
 	mlx_put_image_to_window(game->mlx, game->win, game->textures->player, \
 	game->player_pos_x * TILE_SIZE, game->player_pos_y * TILE_SIZE);
+}
+
+void	ft_move(t_game *game, int next_y, int next_x)
+{
+	char	c;
+
+	c = next_pos(game, next_y, next_x);
+	if (c == '0' || c == 'C')
+	{
+		remove_player(game);
+		move_player(game, next_y, next_x);
+		if (c == 'C')
+			game->nbr_items++;
+		game->nbr_move++;
+		ft_printf("Move : %d\n", game->nbr_move);
+	}
+	if (c == 'E')
+	{
+		remove_player(game);
+		move_player(game, next_y, next_x);
+		if (game->nbr_items == game->map->nbr_items)
+		{
+			ft_free_message("FIN !\n\n", game);
+		}
+	}
 }

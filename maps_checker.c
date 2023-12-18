@@ -6,19 +6,19 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:01:02 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/18 11:09:07 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:14:17 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_check_max_size(int rows, int cols)
+void	check_max_size(int rows, int cols)
 {
 	if (rows > MAX_ROWS || cols > MAX_COLS)
 		ft_error("Error\nMap size too high");
 }
 
-int	ft_check_rows_size(char *line, int rows, int cols, int i)
+int	check_rows_size(char *line, int rows, int cols, int i)
 {
 	if (i == rows - 1)
 	{
@@ -37,9 +37,9 @@ int	ft_check_rows_size(char *line, int rows, int cols, int i)
 	}
 }
 
-void ft_save_maps_rows(t_game *game, char *line, int i, int fd)
+void save_maps_rows(t_game *game, char *line, int i, int fd)
 {
-	if (ft_check_rows_size(line, game->map->rows, game->map->cols, i))
+	if (check_rows_size(line, game->map->rows, game->map->cols, i))
 	{
 		game->map->content[i] = ft_calloc(game->map->cols + 1, \
 		sizeof(char));
@@ -54,7 +54,7 @@ void ft_save_maps_rows(t_game *game, char *line, int i, int fd)
 	free(line);
 }
 
-void	ft_save_map(char *filename, t_game *game, int i)
+void	save_map(char *filename, t_game *game, int i)
 {
 	int		fd;
 	char	*line;
@@ -69,10 +69,10 @@ void	ft_save_map(char *filename, t_game *game, int i)
 		if (!line)
 			return (ft_free_map("Error\nMalloc for game->map->content\n\n", \
 			game, i, fd), free(line));
-		ft_save_maps_rows(game, line, i, fd);
+		save_maps_rows(game, line, i, fd);
 	}
 	close(fd);
-	ft_map_elem(game);
+	ft_check_map_elem(game);
 }
 
 void	ft_check_map(char *filename, t_game *game)
@@ -100,6 +100,6 @@ void	ft_check_map(char *filename, t_game *game)
 	}
 	game->map->rows = rows;
 	close(fd);
-	ft_check_max_size(game->map->rows, game->map->cols);
-	ft_save_map(filename, game, -1);
+	check_max_size(game->map->rows, game->map->cols);
+	save_map(filename, game, -1);
 }
