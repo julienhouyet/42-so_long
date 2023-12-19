@@ -6,7 +6,7 @@
 /*   By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:13:42 by jhouyet           #+#    #+#             */
-/*   Updated: 2023/12/18 12:26:12 by jhouyet          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:04:15 by jhouyet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_move(t_game *game, int next_y, int next_x)
 	{
 		remove_player(game);
 		move_player(game, next_y, next_x);
+		game->nbr_move++;
 		if (game->nbr_items == game->map->nbr_items)
 		{
 			ft_free_message("FIN !\n\n", game);
