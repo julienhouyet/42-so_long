@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/20 12:32:16 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/20 16:25:28 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ RED=\033[0;31m
 GREEN=\033[0;32m
 YELLOW=\033[1;33m
 BLUE=\033[0;34m
+ORANGE=\033[38;2;255;165;0m
 NC=\033[0m 
 
 NAME		= so_long
@@ -47,7 +48,7 @@ all: $(LIBFT) $(MLX) $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
 	@$(CC) $(OBJ) -L$(LIBFT_PATH)lib -lft -L$(MLX_PATH) -lmlx $(MLX_FLAGS) -o $(NAME)
-	@echo "$(GREEN)Executable $(NAME) created!$(NC)"
+	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 
 $(LIBFT):
 	@echo "$(YELLOW)Compiling Libft...$(NC)"
@@ -58,25 +59,25 @@ $(MLX):
 	@$(MAKE) -C $(MLX_PATH) > /dev/null 2>&1
 
 clean:
-	@echo "$(RED)Cleaning objects for So Long...$(NC)"
+	@echo "$(ORANGE)Cleaning objects for So Long...$(NC)"
 	@$(RM) $(OBJ_DIR)*.o
 	@echo "$(GREEN)Cleaned So Long objects!$(NC)"
-	@echo "$(RED)Cleaning objects for Libft...$(NC)"
+	@echo "$(ORANGE)Cleaning objects for Libft...$(NC)"
 	@$(MAKE) clean -C $(LIBFT_PATH) > /dev/null
 	@echo "$(GREEN)Cleaned objects Libft!$(NC)"
-	@echo "$(RED)Cleaning objects for MLX...$(NC)"
+	@echo "$(ORANGE)Cleaning objects for MLX...$(NC)"
 	@$(MAKE) clean -C $(MLX_PATH) > /dev/null
 	@echo "$(GREEN)Cleaned MLX objects!$(NC)"
 
 fclean: clean
-	@echo "$(RED)Fully cleaning library for So Long...$(NC)"
+	@echo "$(ORANGE)Fully cleaning library for So Long...$(NC)"
 	@$(RM) $(NAME)
 	@$(RM) -r $(OBJ_DIR)
 	@echo "$(BLUE)Fully cleaned So Long!$(NC)"
-	@echo "$(RED)Fully cleaning library for Libft...$(NC)"
+	@echo "$(ORANGE)Fully cleaning library for Libft...$(NC)"
 	@$(MAKE) fclean -C $(LIBFT_PATH) > /dev/null
 	@echo "$(BLUE)Fully cleaned Libft!$(NC)"
-	@echo "$(RED)Fully cleaning library for MLX...$(NC)"
+	@echo "$(ORANGE)Fully cleaning library for MLX...$(NC)"
 	@$(MAKE) clean -C $(MLX_PATH) > /dev/null
 	@echo "$(BLUE)Fully cleaned  MLX!$(NC)"
 
