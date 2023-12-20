@@ -6,64 +6,82 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/17 06:35:20 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/20 12:32:16 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+RED=\033[0;31m
+GREEN=\033[0;32m
+YELLOW=\033[1;33m
+BLUE=\033[0;34m
+NC=\033[0m 
+
 NAME		= so_long
 
-SRC			= 	so_long.c \
-				exit.c \
-				maps_checker.c \
-				maps_valid.c \
-				game.c \
-				utils.c \
-				hooks.c \
-				moves.c \
-				maps_path.c
+SRC_DIR		= src/
+OBJ_DIR		= obj/
+INC_DIR		= include/
 
-OBJ			= ${SRC:.c=.o}
+SRC 		= $(wildcard $(SRC_DIR)*.c)
+OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
-LIBFT		= libft.a
+LIBFT 		= libft/lib/libft.a
+LIBFT_PATH 	= libft/
 
-LIBFT_PATH	= libft
-
-MLX			= libmlx.a
-
-MLX_PATH	= mlx
+MLX 		= mlx/libmlx.a
+MLX_PATH 	= mlx/
 
 CC			= gcc
-
 RM			= rm -f
+C_FLAGS		= -Wall -Wextra -Werror
+MLX_FLAGS	= -framework OpenGL -framework AppKit
+INCS 		= -I$(INC_DIR) -I.
 
-C_FLAGS	= -Wall -Wextra -Werror
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@echo "$(YELLOW)Compiling $<$(NC)"
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
-MLX_FLAGS = -framework OpenGL -framework AppKit 
+all: $(LIBFT) $(MLX) $(NAME)
 
-all: ${NAME}
+$(NAME): $(OBJ)
+	@echo "$(GREEN)Linking objects to create executable...$(NC)"
+	@$(CC) $(OBJ) -L$(LIBFT_PATH)lib -lft -L$(MLX_PATH) -lmlx $(MLX_FLAGS) -o $(NAME)
+	@echo "$(GREEN)Executable $(NAME) created!$(NC)"
 
-%.o: %.c
-	$(CC) $(C_FLAGS) -c $< -o $@
+$(LIBFT):
+	@echo "$(YELLOW)Compiling Libft...$(NC)"
+	@$(MAKE) -C $(LIBFT_PATH)
 
-${NAME}: ${OBJ} ${LIBFT} ${MLX}
-	${CC} ${C_FLAGS} ${MLX_FLAGS} ${OBJ} -o ${NAME} ${LIBFT} ${MLX}
-
-${LIBFT}:
-	${MAKE} -C ${LIBFT_PATH}
-	mv ${LIBFT_PATH}/${LIBFT} .
-
-${MLX}:
-	${MAKE} -C ${MLX_PATH}
-	mv ${MLX_PATH}/${MLX} .
+$(MLX):
+	@echo "$(YELLOW)Compiling MLX...$(NC)"
+	@$(MAKE) -C $(MLX_PATH) > /dev/null 2>&1
 
 clean:
-	${MAKE} clean -C ${LIBFT_PATH}
-	${MAKE} clean -C ${MLX_PATH}
-	${RM} ${OBJ}
+	@echo "$(RED)Cleaning objects for So Long...$(NC)"
+	@$(RM) $(OBJ_DIR)*.o
+	@echo "$(GREEN)Cleaned So Long objects!$(NC)"
+	@echo "$(RED)Cleaning objects for Libft...$(NC)"
+	@$(MAKE) clean -C $(LIBFT_PATH) > /dev/null
+	@echo "$(GREEN)Cleaned objects Libft!$(NC)"
+	@echo "$(RED)Cleaning objects for MLX...$(NC)"
+	@$(MAKE) clean -C $(MLX_PATH) > /dev/null
+	@echo "$(GREEN)Cleaned MLX objects!$(NC)"
 
 fclean: clean
-	${RM} ${NAME} ${LIBFT} ${MLX}
+	@echo "$(RED)Fully cleaning library for So Long...$(NC)"
+	@$(RM) $(NAME)
+	@$(RM) -r $(OBJ_DIR)
+	@echo "$(BLUE)Fully cleaned So Long!$(NC)"
+	@echo "$(RED)Fully cleaning library for Libft...$(NC)"
+	@$(MAKE) fclean -C $(LIBFT_PATH) > /dev/null
+	@echo "$(BLUE)Fully cleaned Libft!$(NC)"
+	@echo "$(RED)Fully cleaning library for MLX...$(NC)"
+	@$(MAKE) clean -C $(MLX_PATH) > /dev/null
+	@echo "$(BLUE)Fully cleaned  MLX!$(NC)"
 
-re:	fclean all
 
-.PHONY:	all clean fclean re
+
+re: fclean all
+
+.PHONY: all clean fclean re
