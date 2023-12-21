@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 09:14:53 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/20 16:24:10 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/21 09:50:12 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CURRENT_FILE 	:= 0
 
 define progress_bar_libft
     @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
-    @printf "\r$(YELLOW)Compiling... [%-50s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
+    @printf "\r$(YELLOW)Compiling... [%-$(TOTAL_FILES)s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
 	@if [ $(CURRENT_FILE) -eq $(TOTAL_FILES) ]; then echo ""; fi
 endef
 

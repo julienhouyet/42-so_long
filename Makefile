@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/20 16:25:28 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/21 09:56:16 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,19 @@ C_FLAGS		= -Wall -Wextra -Werror
 MLX_FLAGS	= -framework OpenGL -framework AppKit
 INCS 		= -I$(INC_DIR) -I.
 
+TOTAL_FILES 	:= $(words $(SRC))
+CURRENT_FILE 	:= 0
+
+define progress_bar_so_long
+    @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
+    @printf "\r$(YELLOW)Compiling So Long... [%-$(TOTAL_FILES)s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
+	@if [ $(CURRENT_FILE) -eq $(TOTAL_FILES) ]; then echo ""; fi
+endef
+
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(YELLOW)Compiling $<$(NC)"
 	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+	$(call progress_bar_so_long)
 
 all: $(LIBFT) $(MLX) $(NAME)
 
