@@ -1,6 +1,6 @@
 # 42-so_long
 
-![42-so_long](https://socialify.git.ci/julienhouyet/42-so_long/image?language=1&logo=https%3A%2F%2Fgithub.com%2Fayogun%2F42-project-badges%2Fblob%2Fmain%2Fbadges%2Fso_longm.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Circuit%20Board&theme=Auto)
+![42-so_long](https://socialify.git.ci/julienhouyet/42-so_long/image?logo=https%3A%2F%2Fgithub.com%2Fayogun%2F42-project-badges%2Fraw%2Fmain%2Fbadges%2Fso_longm.png&name=1&owner=1&pattern=Circuit%20Board&theme=Auto)
 
 # Introduction
 
@@ -16,13 +16,13 @@ At [42 School](https://github.com/42School), almost every project must be writte
 
 To install the project, clone this repository :
 
-```
+```shell
 $ git clone git@github.com:julienhouyet/42-so_long.git
 ```
 
 To compile the game, run this command :
 
-```
+```shell
 $ make
 ```
 
@@ -32,23 +32,35 @@ After compiling the project, the executable file with the name so_long will be c
 
 Example:
 
-```
+```shell
 $ ./so_long assets/maps/01.ber
 ```
 
-```
+```shell
 $ ./so_long assets/maps/03.ber
+```
+
+To compile the project, run :
+
+```shell
+$ make
+```
+
+To re-compile the project  :
+
+```shell
+$ make re
 ```
 
 To wipes all object files :
 
-```
+```shell
 $ make clean
 ```
 
-To delete so_long and all object files
+To delete the project and all object files
 
-```
+```shell
 $ make fclean
 ```
 
@@ -72,6 +84,18 @@ P | Player
 E | Exit
 C | Item
 
+Example :
+
+```
+1111111111111
+1001000C000C1
+1000011111001
+1P0011E000001
+1000000000001
+1111111111111
+```
+
+
 ##  :page_facing_up: Resources
  
 [Minilibx Docs](https://harm-smits.github.io/42docs/libs/minilibx)
@@ -81,3 +105,8 @@ C | Item
 <p align="center">
   <img src="https://i.ibb.co/FYQKSLn/Screenshot-2023-12-21-at-11-50-33.png">
 </p>
+
+##  :lock: License
+
+GNU GENERAL PUBLIC LICENSE
+Version 3
