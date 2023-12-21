@@ -8,4 +8,6 @@ This project is a tiny 2D game I developed during my studies at 42. The aim was 
 
 ##  :camera: Gallery
 
-![Description de l'image](https://i.ibb.co/FYQKSLn/Screenshot-2023-12-21-at-11-50-33.png)
+<p align="center">
+  <img src="https://i.ibb.co/FYQKSLn/Screenshot-2023-12-21-at-11-50-33.png">
+</p>
