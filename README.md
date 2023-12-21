@@ -36,18 +36,38 @@ $ ./so_long assets/maps/01.ber
 $ ./so_long assets/maps/03.ber
 ```
 
+For clean the objects files :
+
+```
+$ make clean
+```
+
+For clean the project
+
+```
+$ make fclean
+```
+
 ###  :notebook: More
 
-Your map must be a .ber file. It must be square or rectangular, and surrounded by 1 (wall). 
+You can create your own map.
+
+Your map must be a .ber file. 
+
+It must be square or rectangular, and surrounded by 1 (wall). 
 
 You must use 1 P (player), 1 E (exit), and at least 1 C (item).
 
 You can use the following characters:
 
 0 = Floor
+
 1 = Wall
+
 P = Player
+
 E = Exit
+
 C = Item
 
 ##  :camera: Gallery
