@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/21 09:56:16 by jhouyet          ###   ########.fr        #
+#    Updated: 2023/12/21 11:39:50 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ $(MLX):
 
 clean:
 	@echo "$(ORANGE)Cleaning objects for So Long...$(NC)"
-	@$(RM) $(OBJ_DIR)*.o
+	@rm -rf $(OBJ_DIR)
 	@echo "$(GREEN)Cleaned So Long objects!$(NC)"
 	@echo "$(ORANGE)Cleaning objects for Libft...$(NC)"
 	@$(MAKE) clean -C $(LIBFT_PATH) > /dev/null
