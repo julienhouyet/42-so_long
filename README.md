@@ -106,7 +106,8 @@ Example :
   <img src="https://i.ibb.co/FYQKSLn/Screenshot-2023-12-21-at-11-50-33.png">
 </p>
 
-##  :lock: License
+##  :lock: License and Copyright
 
-GNU GENERAL PUBLIC LICENSE
-Version 3.
+This project is not licensed and is provided as-is for educational and demonstrative purposes only.
+
+The Pokemon sprites used in this game are the property of Nintendo/Game Freak and are used here for demonstration purposes only. No copyright infringement is intended.
