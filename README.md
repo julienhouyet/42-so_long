@@ -103,7 +103,7 @@ Example :
 ##  :camera: Gallery
 
 <p align="center">
-  <img src="https://i.ibb.co/FYQKSLn/Screenshot-2023-12-21-at-11-50-33.png">
+  <img src="assets/screen.png">
 </p>
 
 ##  :lock: License and Copyright
