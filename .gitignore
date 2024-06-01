@@ -1,2 +1,15 @@
 **/*.DS_Store
 .vscode
+so_long
+obj/
+libft/obj
+libft/lib
+mlx/libmlx.a
+mlx/mlx_init_loop.o
+mlx/mlx_int_str_to_wordtab.o
+mlx/mlx_mouse.o
+mlx/mlx_new_image.o
+mlx/mlx_new_window.o
+mlx/mlx_png.o
+mlx/mlx_shaders.o
+mlx/mlx_xpm.o
