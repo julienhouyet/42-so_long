@@ -6,7 +6,7 @@
 #    By: jhouyet <jhouyet@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:09:58 by jhouyet           #+#    #+#              #
-#    Updated: 2023/12/21 11:39:50 by jhouyet          ###   ########.fr        #
+#    Updated: 2024/06/01 12:40:09 by jhouyet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ MLX_PATH 	= mlx/
 
 CC			= gcc
 RM			= rm -f
-C_FLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror
 MLX_FLAGS	= -framework OpenGL -framework AppKit
 INCS 		= -I$(INC_DIR) -I.
 
